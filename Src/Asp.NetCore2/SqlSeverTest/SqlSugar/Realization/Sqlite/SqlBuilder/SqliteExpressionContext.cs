@@ -32,21 +32,21 @@ namespace SqlSugar
         {
             var parameter = model.Args[0];
             var parameter2 = model.Args[1];
-            return string.Format(" ({0} like '%'||{1}||'%') ", parameter.MemberName, parameter2.MemberName);
+            return string.Format(" ({0} like '%{1}%') ", parameter.MemberName, parameter2.MemberName);
         }
 
         public override string StartsWith(MethodCallExpressionModel model)
         {
             var parameter = model.Args[0];
             var parameter2 = model.Args[1];
-            return string.Format(" ({0} like {1}||'%') ", parameter.MemberName, parameter2.MemberName);
+            return string.Format(" ({0} like '{1}%') ", parameter.MemberName, parameter2.MemberName);
         }
 
         public override string EndsWith(MethodCallExpressionModel model)
         {
             var parameter = model.Args[0];
             var parameter2 = model.Args[1];
-            return string.Format("  ({0} like '%'||{1}) ", parameter.MemberName, parameter2.MemberName);
+            return string.Format("  ({0} like '%{1}') ", parameter.MemberName, parameter2.MemberName);
         }
 
         public override string ToInt32(MethodCallExpressionModel model)
